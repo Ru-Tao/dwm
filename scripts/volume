@@ -1,0 +1,9 @@
+#!/bin/bash 
+vol="$(pamixer --get-volume)"
+sink="$(pamixer --get-default-sink)"
+
+out_icon=""
+
+[ $(pamixer --get-mute) = true ] && echo "$out_icon M" && exit
+
+echo "$out_icon $vol%"

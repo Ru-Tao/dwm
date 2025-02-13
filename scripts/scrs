@@ -1,0 +1,11 @@
+shotgun -s /dev/shm/screenshot.png
+nsxiv -f --anti-alias=no -b /dev/shm/screenshot.png &
+nsxiv_pid=$!
+
+# take the new screenshot by selection, pipe to clipboard
+maim -s -u ~/Pictures/Screenshots/$(date +%y-%m-%d_%H:%M:%S).png
+
+
+# kill nsxiv
+kill "$nsxiv_pid"
+rm /dev/shm/screenshot.png
